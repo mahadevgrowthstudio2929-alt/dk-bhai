@@ -1,1 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
+<title>DK BHAI | Tennis Analysis Community</title>
+
+<meta name="description" content="Explore tennis match insights, analysis and community discussions with DK BHAI.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+ --bg:#071322;
+ --blue:#168bff;
+ --lime:#c7ff36;
+ --white:#f5faff;
+ --muted:#9badc1;
+}
+
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+}
+
+html,body{
+ width:100%;
+ min-height:100%;
+ background:var(--bg);
+ color:var(--white);
+ font-family:'DM Sans',sans-serif;
+ overflow-x:hidden;
+}
+
+body{
+ min-height:100svh;
+ display:flex;
+ justify-content:center;
+ background:
+ radial-gradient(ellipse at 50% 15%,#17437a 0%,transparent 55%),
+ linear-gradient(155deg,#091b30,#050e1b 75%);
+}
+
+.page{
+ width:100%;
+ max-width:450px;
+ min-height:100svh;
+ position:relative;
+ isolation:isolate;
+ overflow:hidden;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ padding:22px 22px 18px;
+ text-align:center;
+}
+
+/* BACKGROUND COURT */
+
+.court{
+ position:absolute;
+ width:330px;
+ height:330px;
+ border:1px solid rgba(57,147,255,.13);
+ transform:rotate(-32deg);
+ top:14%;
+ left:50%;
+ margin-left:-165px;
+ z-index:-1;
+ border-radius:15px;
+}
+
+.court:before{
+ content:"";
+ position:absolute;
+ inset:45px;
+ border:1px solid rgba(57,147,255,.12);
+}
+
+.court:after{
+ content:"";
+ position:absolute;
+ width:1px;
+ height:100%;
+ background:rgba(57,147,255,.12);
+ left:50%;
+}
+
+/* TOP LABEL */
+
+.top-tag{
+ display:inline-flex;
+ align-items:center;
+ gap:8px;
+ border:1px solid rgba(199,255,54,.25);
+ background:rgba(199,255,54,.07);
+ border-radius:30px;
+ padding:8px 15px;
+ font-size:10px;
+ font-weight:800;
+ letter-spacing:1.6px;
+ color:var(--lime);
+ margin-bottom:22px;
+}
+
+.dot{
+ width:7px;
+ height:7px;
+ background:var(--lime);
+ border-radius:50%;
+ box-shadow:0 0 12px var(--lime);
+ animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+ 50%{opacity:.35;transform:scale(.7)}
+}
+
+/* LOGO */
+
+.logo-wrap{
+ position:relative;
+ width:108px;
+ height:108px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ margin-bottom:15px;
+}
+
+.logo-wrap:before{
+ content:"";
+ position:absolute;
+ inset:-9px;
+ border:1px dashed rgba(199,255,54,.55);
+ border-radius:50%;
+ animation:rotate 22s linear infinite;
+}
+
+.logo-wrap:after{
+ content:"";
+ position:absolute;
+ inset:-3px;
+ border-radius:50%;
+ border:2px solid var(--blue);
+ box-shadow:0 0 28px rgba(22,139,255,.35);
+}
+
+.logo{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ border-radius:50%;
+ background:#10243b;
+}
+
+@keyframes rotate{
+ to{transform:rotate(360deg)}
+}
+
+/* BRAND */
+
+.brand-small{
+ font-size:10px;
+ letter-spacing:4px;
+ color:var(--lime);
+ font-weight:800;
+ margin-bottom:3px;
+}
+
+h1{
+ font-family:'Barlow Condensed',sans-serif;
+ font-size:clamp(62px,17vw,83px);
+ font-weight:900;
+ line-height:.95;
+ letter-spacing:1px;
+ font-style:italic;
+ text-shadow:0 7px 25px rgba(0,0,0,.3);
+}
+
+h1 span{
+ color:var(--lime);
+}
+
+.brand-line{
+ width:65px;
+ height:4px;
+ background:var(--lime);
+ border-radius:10px;
+ margin:15px auto;
+ box-shadow:0 0 18px rgba(199,255,54,.5);
+}
+
+.subtitle{
+ font-size:12px;
+ font-weight:700;
+ letter-spacing:2px;
+ color:#d4e7fa;
+}
+
+/* FEATURE STRIP */
+
+.features{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:7px;
+ margin-top:23px;
+ margin-bottom:24px;
+ width:100%;
+}
+
+.feature{
+ background:rgba(255,255,255,.045);
+ border:1px solid rgba(255,255,255,.11);
+ padding:10px 9px;
+ border-radius:9px;
+ flex:1;
+}
+
+.feature .icon{
+ display:block;
+ color:var(--lime);
+ font-size:16px;
+ margin-bottom:5px;
+}
+
+.feature p{
+ font-size:9px;
+ font-weight:800;
+ letter-spacing:.4px;
+ white-space:nowrap;
+}
+
+/* CONVERSION SECTION */
+
+.join-heading{
+ font-family:'Barlow Condensed',sans-serif;
+ font-size:29px;
+ line-height:1;
+ font-weight:800;
+ letter-spacing:.3px;
+ margin-bottom:8px;
+}
+
+.join-heading span{
+ color:var(--lime);
+}
+
+.join-desc{
+ color:var(--muted);
+ font-size:11px;
+ line-height:1.6;
+ max-width:280px;
+ margin-bottom:18px;
+}
+
+/* CTA */
+
+.join-btn{
+ width:100%;
+ max-width:350px;
+ border:0;
+ outline:0;
+ border-radius:13px;
+ padding:18px 15px;
+ background:var(--lime);
+ color:#091624;
+ font-family:'DM Sans',sans-serif;
+ font-size:15px;
+ font-weight:900;
+ letter-spacing:.7px;
+ cursor:pointer;
+ position:relative;
+ overflow:hidden;
+ box-shadow:
+ 0 7px 0 #83a91d,
+ 0 14px 35px rgba(199,255,54,.22);
+ animation:buttonGlow 2.5s infinite;
+}
+
+.join-btn:before{
+ content:"";
+ position:absolute;
+ width:45%;
+ height:180%;
+ background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);
+ transform:rotate(25deg);
+ left:-70%;
+ top:-40%;
+ animation:shine 3.8s infinite;
+}
+
+@keyframes shine{
+ 0%,35%{left:-70%}
+ 65%,100%{left:140%}
+}
+
+@keyframes buttonGlow{
+ 50%{
+ box-shadow:
+ 0 7px 0 #83a91d,
+ 0 14px 42px rgba(199,255,54,.42);
+ }
+}
+
+.join-btn:active{
+ transform:translateY(4px);
+ box-shadow:0 3px 0 #83a91d;
+}
+
+/* BELOW CTA */
+
+.below-btn{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:7px;
+ margin-top:20px;
+ color:#b5c6d8;
+ font-size:10px;
+ font-weight:600;
+}
+
+.check{
+ color:var(--lime);
+ font-size:14px;
+}
+
+/* FOOTER */
+
+.footer{
+ margin-top:25px;
+ font-size:9px;
+ color:#647c96;
+ line-height:1.6;
+ max-width:310px;
+}
+
+.footer strong{
+ color:#829bb5;
+ font-weight:600;
+}
+
+/* FLOATING TENNIS BALL */
+
+.ball{
+ position:absolute;
+ right:-19px;
+ top:21%;
+ width:57px;
+ height:57px;
+ border-radius:50%;
+ background:radial-gradient(circle at 30% 25%,#efff8b,#b3e82c 65%,#77a414);
+ box-shadow:0 0 38px rgba(199,255,54,.2);
+ z-index:-1;
+ animation:float 5s ease-in-out infinite;
+ overflow:hidden;
+ opacity:.8;
+}
+
+.ball:before{
+ content:"";
+ position:absolute;
+ width:42px;
+ height:75px;
+ border:2px solid white;
+ border-radius:50%;
+ left:-28px;
+ top:-10px;
+}
+
+.ball:after{
+ content:"";
+ position:absolute;
+ width:42px;
+ height:75px;
+ border:2px solid white;
+ border-radius:50%;
+ right:-28px;
+ top:-10px;
+}
+
+@keyframes float{
+ 50%{transform:translateY(-15px) rotate(20deg)}
+}
+
+/* SMALL SCREEN */
+
+@media(max-height:740px){
+
+.page{
+ padding-top:13px;
+ padding-bottom:12px;
+}
+
+.top-tag{margin-bottom:14px}
+
+.logo-wrap{
+ width:85px;
+ height:85px;
+ margin-bottom:12px;
+}
+
+h1{font-size:65px}
+
+.brand-line{margin:10px auto}
+
+.features{
+ margin-top:16px;
+ margin-bottom:17px;
+}
+
+.feature{padding:8px 6px}
+
+.join-heading{font-size:26px}
+
+.join-desc{margin-bottom:13px}
+
+.join-btn{padding:15px}
+
+.below-btn{margin-top:15px}
+
+.footer{margin-top:17px}
+
+}
+
+@media(max-height:610px){
+ .court,.ball{display:none}
+ .top-tag{margin-bottom:9px}
+ .logo-wrap{width:65px;height:65px;margin-bottom:9px}
+ h1{font-size:52px}
+ .brand-line{margin:7px auto}
+ .features{margin:10px 0}
+ .feature{padding:6px 4px}
+ .join-heading{font-size:23px}
+ .join-desc{margin-bottom:9px}
+ .join-btn{padding:12px}
+ .below-btn{margin-top:10px}
+ .footer{margin-top:10px}
+}
+
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{
+ animation:none!important;
+ scroll-behavior:auto!important;
+ }
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+<div class="court"></div>
+<div class="ball"></div>
+
+<!-- TOP BADGE -->
+
+<div class="top-tag">
+ <span class="dot"></span>
+ TENNIS ANALYSIS COMMUNITY
+</div>
+
+<!-- CHANNEL LOGO -->
+
+<div class="logo-wrap">
+ <img src="logo.png" class="logo" alt="DK BHAI Logo">
+</div>
+
+<!-- BRANDING -->
+
+<div class="brand-small">THE TENNIS DESK</div>
+
+<h1>DK <span>BHAI.</span></h1>
+
+<div class="brand-line"></div>
+
+<div class="subtitle">
+ TENNIS INSIGHTS & ANALYSIS
+</div>
+
+<!-- HIGHLIGHTS -->
+
+<div class="features">
+
+ <div class="feature">
+  <span class="icon">◉</span>
+  <p>MATCH INSIGHTS</p>
+ </div>
+
+ <div class="feature">
+  <span class="icon">↗</span>
+  <p>GAME UPDATES</p>
+ </div>
+
+ <div class="feature">
+  <span class="icon">✦</span>
+  <p>TENNIS TALK</p>
+ </div>
+
+</div>
+
+<!-- JOIN SECTION -->
+
+<div class="join-heading">
+ YOUR COURTSIDE <span>EDGE.</span>
+</div>
+
+<p class="join-desc">
+ Stay connected with DK BHAI for tennis insights,
+ match discussions & regular updates.
+</p>
+
+<!-- MAIN CTA BUTTON -->
+
+<button
+ class="join-btn"
+ type="button"
+ onclick="joinChannel()">
+ JOIN DK BHAI CHANNEL &nbsp; ↗
+</button>
+
+<div class="below-btn">
+ <span class="check">✓</span>
+ Explore the community and stay connected
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+ Independent tennis discussion community.<br>
+ Content is informational, not financial advice.
+ <br><br>
+ <strong>DK BHAI © 2026</strong>
+</footer>
+
+</main>
+
+<script>
+
+function joinChannel(){
+
+ const channelURL = "https://t.me/+hE5IT1qOT_xhNGI1";
+
+ window.open(channelURL, "_blank", "noopener,noreferrer");
+
+}
+
+</script>
+
+</body>
+</html>
